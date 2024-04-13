@@ -3,11 +3,14 @@
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
-require_once __DIR__ . '/vendor/autoload.php';
 
+require dirname(__DIR__).'/vendor/autoload.php';
 
-// Chargement des variables d'environnement (une seule fois suffit)
-(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+// The check below prevents loading the .env file in production
+if ($_SERVER['APP_ENV'] !== 'prod') {
+    (new Dotenv())->loadEnv(dirname(__DIR__).'/.env');
+}
+
 // Load the ".env" file only if it exists and the app is not in production
 if ($_SERVER['APP_ENV'] !== 'prod') {
     if (file_exists(dirname(__DIR__).'/.env')) {
