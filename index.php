@@ -8,6 +8,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // Chargement des variables d'environnement (une seule fois suffit)
 (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+// Load the ".env" file only if it exists and the app is not in production
+if ($_SERVER['APP_ENV'] !== 'prod') {
+    if (file_exists(dirname(__DIR__).'/.env')) {
+        (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+    }
+}
 
 // Activation du mode debug
 if ($_SERVER['APP_DEBUG']) {
