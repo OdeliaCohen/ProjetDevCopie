@@ -3,8 +3,8 @@
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
-// Utilisation de "require_once" pour éviter l'inclusion multiple du fichier
-require_once dirname(__DIR__).'/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
 
 // Chargement des variables d'environnement (une seule fois suffit)
 (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
