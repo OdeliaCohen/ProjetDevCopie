@@ -4,8 +4,6 @@ use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
 
-require dirname(__DIR__).'/vendor/autoload.php';
-
 // The check below prevents loading the .env file in production
 if ($_SERVER['APP_ENV'] !== 'prod') {
     (new Dotenv())->loadEnv(dirname(__DIR__).'/.env');
